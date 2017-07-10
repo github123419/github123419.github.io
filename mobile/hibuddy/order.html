@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta http-equiv="keywords" content="" />
+	<meta name="description" content="" />
+	<title>填写订单</title>
+	<script src="../dist/js/font.js"></script>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="iOrder">
+	<header class="hed">
+		填写订单
+	</header>
+
+	<!--sec1-->
+	<section class="sec sec1">		
+
+		<h3 class="tit">收货地址</h3>
+
+		<div class="tib tib-1">
+			<div class="inp-group">
+				<input type="text" name="user" placeholder="姓名">
+			</div>
+			<div class="inp-group">
+				<input type="tel" name="tel" placeholder="手机">
+			</div>
+			<div class="inp-group" id="areaPicker">
+				<select name="province" id="province"></select>			
+				<select name="city" id="city"></select>
+				<select name="district" id="district"></select>
+			</div>
+			<div class="inp-group">
+				<input type="text" name="addr2" placeholder="详细地址">
+			</div>
+			<div class="inp-group">
+				<input type="text" name="email" placeholder="联系邮箱(接收订单信息)">
+			</div>			
+		</div>
+
+		<div class="tib tib-2">
+			数量
+			<div class="num-group">
+				<span class="btn-num btn-plus">+</span>
+				<input type="number" name="num" disabled value="1">
+				<span class="btn-num btn-minus">-</span>
+			</div>
+		</div>
+
+		<div class="tib tib-3">
+			<h3>支付方式</h3>
+			<ul>
+				<li class="active"><a href="javascript:;"><img src="./images/wx.png" alt="wx.png">微信支付</a></li>
+				<li><a href="javascript:;"><img src="./images/zfb.png" alt="zfb.png">支付宝</a></li>
+			</ul>
+		</div>
+	</section>
+
+	<!--sec2-->
+	<section class="sec sec2">
+		<span class="price">￥599</span>
+		<a href="javascript:;" class="sub">提交订单</a>
+	</section>
+
+	<!-- js -->
+	<script src="../dist/js/jquery-1.11.3.min.js"></script>
+    <script src="./js/distpicker.data.js"></script>
+	<script src="./js/distpicker.js"></script>
+	<script>
+		$("#areaPicker").distpicker({
+		  province: "省",
+		  city: "市",
+		  district: "县/区",
+		  autoSelect: false
+		});
+	</script>
+	<script>
+		$(function(){
+			
+			//加、减
+			$('.btn-plus').on('click',function(){
+				var i = parseInt($(this).siblings('input').val());
+				if(i<=10){
+					i++;
+					$(this).siblings('input').val(i);
+				}
+
+			});
+			$('.btn-minus').on('click',function(){
+				var i = parseInt($(this).siblings('input').val());
+				if(i>1){
+					i--;
+					$(this).siblings('input').val(i);
+				}
+			});
+			//支付方式切换
+			$('.iOrder .sec1 .tib-3 li').on('click',function(){
+				$(this).addClass('active').siblings('li').removeClass('active');
+			});
+		})
+	</script>
+</body>
+</html>

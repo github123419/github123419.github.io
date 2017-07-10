@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta http-equiv="keywords" content="" />
+	<meta name="description" content="" />
+	<title></title>
+	<script src="../dist/js/font.js"></script>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="iReg">
+	
+	<!--hed-->
+	<header class="hed">
+		<img src="./images/reg-1.png" alt="reg-1.png">
+		<p>注册成为SoDive用户</p>
+	</header>
+
+	<!--sec-->
+	<section class="sec">
+		<form action="javascript:;">
+			<div class="inp-group">
+				<input type="text" placeholder="昵称">
+			</div>
+			<div class="inp-group">
+				<input type="text" placeholder="邮箱">
+			</div>
+			<div class="inp-group inp-group2">
+				<input type="text" placeholder="验证码">
+				<a href="javascript:;" class="yzm">获取</a>
+			</div>
+			<div class="inp-group">
+				<input type="text" placeholder="密码">
+			</div>
+			<div class="check-group">
+				<span class="check active"></span>
+				同意 <a href="javascript:;">使用条款和隐私声明</a>
+			</div>
+			<div class="subbox">
+				<input type="submit" value="注册" name="submit">
+			</div>
+		</form>
+	</section>
+
+	<!-- js -->
+	<script src="../dist/js/jquery-1.11.3.min.js"></script>
+	<script>
+		$(function(){			
+
+			//同意条款
+			$('.iReg .check-group .check').on('click',function(){
+				if($(this).hasClass('active')) {
+					$(this).removeClass('active')
+				} else {
+					$(this).addClass('active')
+				}
+			});
+
+			//获取验证码；
+			function Yzm(obj){
+				this.timer=null;
+				this.countDown = 60;
+				this.isCount = false;
+				this.valFix = ['还剩','秒'];
+				this.obj = obj;
+			}
+
+			Yzm.prototype.init = function(){
+				if(!this.isCount){
+					this.counting();
+				}				
+			}
+
+			Yzm.prototype.counting = function(){	
+				var _this = this;			
+				_this.timer = setInterval(function(){
+					_this.countDown--;
+					if(_this.countDown>0){
+						_this.obj.text(_this.valFix[0] + _this.countDown + _this.valFix[1]);
+						_this.isCount = true;
+					} else{
+						clearInterval(_this.timer);
+						_this.obj.text('重新发送');
+						_this.isCount = false;
+					}
+					
+				},1000);				
+			}	
+
+			var sendMsg = new Yzm($('.yzm'));
+			$('.yzm').on('click',function(){
+				sendMsg.init();
+			});		
+
+		});
+	</script>
+</body>
+</html>

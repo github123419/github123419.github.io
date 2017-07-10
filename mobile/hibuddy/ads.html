@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta http-equiv="keywords" content="" />
+	<meta name="description" content="" />
+	<title>招商广告</title>
+	<script src="../dist/js/font.js"></script>
+	<link rel="stylesheet" href="./css/ads.css">
+</head>
+<body onmousewheel="return false;">
+
+	<div class="container">
+
+		<!--page0-->
+		<div class="page page0">
+			<p class="pic"><img src="./images/d-6.png" alt="d-6.png"></p>		
+			<p class="des">共赢未来</p>			
+			<div class="cir">
+				<img class="img1" src="./images/d-7.png" alt="d-7.png">
+				<img class="img2" src="./images/free.png" alt="free.png">
+			</div>	
+			<p class="logo3"><img src="./images/logo3.png" alt="logo3.png"></p>		
+			<footer class="fot">
+				<img src="./images/arrow-down-1.png" alt="arrow-down-1.png">
+			</footer>
+		</div>
+
+		<!--page1-->
+		<div class="page page1">
+			<div class="pic"><img src="./images/d-5.png" alt="d-5.png"></div>			
+			<p class="des">
+				每个潜导/潜水教练<br>
+				在SoDive平台注册成功<br>
+				后均可申领一个价值<br>
+				<em>￥599</em>的潜伴灯，数量<br>
+				有限，先到先得！
+			</p>			
+			<p class="info">了解详情请加 <br>微信号：sodivecom</p>			
+			<footer class="fot">
+				<img src="./images/arrow-down-1.png" alt="arrow-down-1.png">
+			</footer>
+		</div>
+
+		<!--page2-->
+		<div class="page page2">
+			<header class="hed">潜伴灯<br>BUDDYLIGHT</header>			
+			<section class="sec">
+				<div class="pic"><img src="./images/light-1.png" alt="light-1.png"></div>
+				<p class="price-label">零售价</p>
+				<p class="price">￥599 / $99</p>
+				<p class="des">本产品是由我们自主研发，拥有发明专利，用于潜水环境指示及提示潜水气瓶内压的安全辅助工具，在不同的瓶内压力下以不同颜色进行区分。</p>
+				<ul class="lights">
+					<li><span class="color-1">紫色灯长亮 180-220Bar</span></li>
+					<li><span class="color-2">蓝色灯长亮 110-180bar</span></li>
+					<li><span class="color-3">绿色灯长亮 60-110bar</span></li>
+					<li><span class="color-4">红色灯闪烁 60bar以下</span></li>					
+				</ul>
+				<!--<div class="logo2">
+					<img src="./images/logo2.png" alt="logo2.png">
+				</div>-->
+			</section>
+			<footer class="fot">
+				<img src="./images/arrow-down-1.png" alt="arrow-down-1.png">
+			</footer>
+		</div>
+
+		<!--page3-->
+		<div class="page page3">
+			<header class="hed">潜伴灯的真实使用</header>			
+			<section class="sec">
+				<div class="dv-1"><img src="./images/d-3.png" alt="d-3.png"></div>
+				<div class="dv-1">
+					<div class="dv-2">
+						<img src="./images/d-1.png" alt="d-1.png">
+					</div>
+					<div class="dv-2">
+						<img src="./images/d-2.png" alt="d-2.png">
+					</div>
+				</div>
+				<!-- <div class="logo2">
+					<img src="./images/logo2.png" alt="logo2.png">
+				</div> -->
+			</section>
+			<footer class="fot">
+				<img src="./images/arrow-down-1.png" alt="arrow-down-1.png">
+			</footer>
+		</div>
+
+		<!--page4-->
+		<div class="page page4">
+			<header class="hed">欲了解详情<br>请扫描二维码加微信</header>
+			<section class="sec">
+				<div class="bg">
+					<img src="./images/ewm-1.png" alt="section">
+					<p>微信号：sodivecom</p>
+				</div>
+			</section>
+			<footer class="fot">
+				深圳市前海潜伴科技有限公司<br>
+			Shenzhen Qianhai Science and Technology Co., Ltd
+			</footer>
+		</div>
+	</div>
+	
+
+	<!--js-->
+	<script src="../dist/js/jquery-1.11.3.min.js"></script>
+	<script src="../dist/js/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var nowpage = 0;
+
+			$(".container").swipe({
+				
+				swipe: function(event, direction, distance, duration, fingerCount) {
+
+					if (direction == "up") {
+						nowpage = nowpage + 1;
+
+					} else if (direction == "down") { 
+						nowpage = nowpage - 1;
+					}
+
+					if (nowpage > 4) { nowpage = 4;}
+
+					if (nowpage < 0) { nowpage = 0; }
+
+					$(".container").animate({  "top": nowpage * -100 + "%" },400);
+
+					$(".page").eq(nowpage).addClass("cur").siblings().removeClass("cur");
+
+				}
+
+			});
+
+		});
+	</script>
+
+</body>
+</html>
