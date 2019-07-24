@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="html-bg1">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta http-equiv="keywords" content="" />
+	<meta name="description" content="" />
+	<title>首页</title>
+	<script src="../dist/js/font.js"></script>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="iIndex">
+
+	<!--hed-->
+	<header class="hed">
+			<p>vconsole测试demo</p>
+	</header>
+
+	<!-- sec -->
+	<section class="cont">
+			<textarea  id="txt" rows="6" placeholder="请输入代码"></textarea>
+			<button id="btn">提交</button>
+	</section>
+
+	<!-- js -->
+	<script src="../dist/js/jquery-1.11.3.min.js"></script>
+	<script src="./js/vconsole.min.js"></script>
+	<script>
+		var vConsole = new VConsole();
+  		console.log('vConsole 启动了');
+
+		$(function(){
+			$('#btn').on('click',function(){
+				console.log('打印：',eval($('#txt').val()))
+			})
+		})
+	</script>
+</body>
+</html>
